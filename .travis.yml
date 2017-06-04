@@ -7,3 +7,7 @@ install:
 script:
 - flake8 .
 - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ] && python script.py'
+notifications:
+  email:
+    - mcastelluccio@mozilla.com
+    - release-mgmt@mozilla.com
