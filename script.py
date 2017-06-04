@@ -47,3 +47,6 @@ if __name__ == '__main__':
     socorro_buildIDs = get_socorro_buildIDs(version)
     if latest_nightly[:8] not in [str(bid)[:8] for bid in socorro_buildIDs]:
         raise Exception('Crash reports missing for latest Nightly (' + latest_nightly + ')! Latest buildID on Socorro: ' + str(max(socorro_buildIDs)))
+
+    print('Latest build ' + str(latest_nightly))
+    print('Latest build on Socorro: ' + str(max(socorro_buildIDs)))
