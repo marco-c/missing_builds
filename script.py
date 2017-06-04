@@ -42,8 +42,8 @@ if __name__ == '__main__':
 
     if date < datetime.utcnow() - timedelta(2):
         delta = abs(date - datetime.utcnow())
-        print('Build missing for ' + str(delta.days) + ' days!')
+        raise Exception('Build missing for ' + str(delta.days) + ' days!')
 
     socorro_buildIDs = get_socorro_buildIDs(version)
     if latest_nightly[:8] not in [str(bid)[:8] for bid in socorro_buildIDs]:
-        print('Crash reports missing for latest Nightly (' + latest_nightly + ')! Latest buildID on Socorro: ' + str(max(socorro_buildIDs)))
+        raise Exception('Crash reports missing for latest Nightly (' + latest_nightly + ')! Latest buildID on Socorro: ' + str(max(socorro_buildIDs)))
