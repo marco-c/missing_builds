@@ -8,7 +8,7 @@ def get_nightly_version():
 
 
 def get_latest_nightly_buildID(version):
-    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-15/fennec-' + version + '.multi.android-arm_info.txt')
+    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
     return r.text[len('buildID='):-1]
 
 
