@@ -3,12 +3,10 @@ import requests
 
 
 def get_nightly_version():
-    r = requests.get('https://product-details.mozilla.org/1.0/firefox_versions.json')
-    return r.json()['FIREFOX_NIGHTLY']
-
+    return '68.0a1'
 
 def get_latest_nightly_buildID(version):
-    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
+    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-beta-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
     return r.text[len('buildID='):-1]
 
 
