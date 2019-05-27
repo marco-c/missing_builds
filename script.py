@@ -7,6 +7,7 @@ def get_nightly_version():
 
 def get_latest_nightly_buildID(version):
     r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-beta-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
+    r.raise_for_status()
     return r.text[len('buildID='):-1]
 
 
@@ -29,6 +30,7 @@ def get_socorro_buildIDs(version):
         '_results_number': 0,
         '_facets': 'build_id',
     })
+    r.raise_for_status()
     return [elem['term'] for elem in r.json()['facets']['build_id']]
 
 
