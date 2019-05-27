@@ -5,6 +5,7 @@ import requests
 def get_nightly_version():
     return '68.0a1'
 
+
 def get_latest_nightly_buildID(version):
     r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-beta-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
     r.raise_for_status()
