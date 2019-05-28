@@ -41,7 +41,7 @@ if __name__ == '__main__':
     latest_nightly = get_latest_nightly_buildID(version)
     date = parse_buildID(latest_nightly)
 
-    if date < datetime.utcnow() - timedelta(2):
+    if date < datetime.utcnow() - timedelta(3):
         delta = abs(date - datetime.utcnow())
         raise Exception('Build missing for ' + str(delta.days) + ' days!')
 
