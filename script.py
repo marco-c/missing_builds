@@ -3,12 +3,12 @@ import requests
 
 
 def get_nightly_version():
-    r = requests.get('https://product-details.mozilla.org/1.0/firefox_versions.json')
-    return r.json()['FIREFOX_NIGHTLY']
+    return '68.0a1'
 
 
 def get_latest_nightly_buildID(version):
-    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
+    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-beta-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
+    r.raise_for_status()
     return r.text[len('buildID='):-1]
 
 
@@ -31,6 +31,7 @@ def get_socorro_buildIDs(version):
         '_results_number': 0,
         '_facets': 'build_id',
     })
+    r.raise_for_status()
     return [elem['term'] for elem in r.json()['facets']['build_id']]
 
 
@@ -40,7 +41,7 @@ if __name__ == '__main__':
     latest_nightly = get_latest_nightly_buildID(version)
     date = parse_buildID(latest_nightly)
 
-    if date < datetime.utcnow() - timedelta(2):
+    if date < datetime.utcnow() - timedelta(3):
         delta = abs(date - datetime.utcnow())
         raise Exception('Build missing for ' + str(delta.days) + ' days!')
 
