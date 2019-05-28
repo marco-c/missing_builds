@@ -6,7 +6,7 @@ install:
 - pip install -r test-requirements.txt
 script:
 - flake8 .
-- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ] && python script.py'
+- 'python script.py'
 notifications:
   email:
     - mcastelluccio@mozilla.com
