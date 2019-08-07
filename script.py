@@ -3,11 +3,12 @@ import requests
 
 
 def get_nightly_version():
-    return '68.0a1'
+    r = requests.get('https://product-details.mozilla.org/1.0/mobile_versions.json')
+    return r.json()['alpha_version']
 
 
 def get_latest_nightly_buildID(version):
-    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-beta-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
+    r = requests.get('https://archive.mozilla.org/pub/mobile/nightly/latest-mozilla-esr68-android-api-16/fennec-' + version + '.multi.android-arm_info.txt')
     r.raise_for_status()
     return r.text[len('buildID='):-1]
 
